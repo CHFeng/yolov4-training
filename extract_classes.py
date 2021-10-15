@@ -6,12 +6,12 @@ from xml.dom.minidom import parseString
 from lxml.etree import Element, SubElement, tostring
 from IPython.display import clear_output
 # for parse command line
-from absl import app, flags, logging
+from absl import app, flags
 from absl.flags import FLAGS
 
 pwd = os.path.abspath(os.getcwd())
 flags.DEFINE_string("source_path", pwd, "coco圖片集的路徑")
-flags.DEFINE_string("output_path", pwd + "/extracted_dataset/", "抽取出的圖片集存放路徑")
+flags.DEFINE_string("output_path", os.path.join(pwd, "extracted_dataset"), "抽取出的圖片集存放路徑")
 flags.DEFINE_string("class_list", "person,car", "設定要抽取出的圖片集類別")
 
 
