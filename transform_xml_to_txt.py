@@ -73,6 +73,11 @@ def main(argv):
     for className in FLAGS.class_list.split(','):
         classList[className] = i
         i += 1
+    # write class name list into "obj.names"
+    with open(os.path.join(FLAGS.output_path, "obj.names"), 'w') as the_file:
+        for className in classList:
+            the_file.write(className + "\n")
+    the_file.close()
     # make sure the ouput folder existed
     if not os.path.exists(FLAGS.output_path):
         os.makedirs(FLAGS.output_path)
