@@ -124,7 +124,7 @@ python create_yolo_cfg.py -img_path ../coco_dataset/yolo/ -cfg_path ../coco_data
 ```
 如果發生記憶體不足而發生當機問題時，可以嘗試調整yolov4.cfg檔案中的參數。
 * width, height調小，預設為416，此數值須為32的倍數。
-* batch, subdivisions數值調小。mini_batch = batch/subdivisions，而 mini_batch 才是實際送進去訓練的 batch
+* subdivisions數值調大，預設為16，可調大為32, 64。mini_batch = batch/subdivisions，而 mini_batch 才是實際送進去訓練的 batch
 
 如果要從上次訓練的結果接續訓練可以執行命令：
 ```

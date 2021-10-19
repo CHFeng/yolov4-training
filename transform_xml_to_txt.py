@@ -73,14 +73,14 @@ def main(argv):
     for className in FLAGS.class_list.split(','):
         classList[className] = i
         i += 1
+    # make sure the ouput folder existed
+    if not os.path.exists(FLAGS.output_path):
+        os.makedirs(FLAGS.output_path)
     # write class name list into "obj.names"
     with open(os.path.join(FLAGS.output_path, "obj.names"), 'w') as the_file:
         for className in classList:
             the_file.write(className + "\n")
     the_file.close()
-    # make sure the ouput folder existed
-    if not os.path.exists(FLAGS.output_path):
-        os.makedirs(FLAGS.output_path)
     # get file name & file extension
     for file in os.listdir(FLAGS.source_path):
         fileName, file_extension = os.path.splitext(file)
@@ -93,8 +93,8 @@ def main(argv):
                 transferYolo(xmlfilePath, imgfilePath, fileName)
                 copyfile(imgfilePath, os.path.join(FLAGS.output_path, file))
                 fileCount += 1
-        if fileCount % 1000 == 0:
-            print("Processed files count:%d" % fileCount)
+                if fileCount > 0 and fileCount % 1000 == 0:
+                    print("Processed files count:%d" % fileCount)
 
     print("Total files are:%d" % fileCount)
 

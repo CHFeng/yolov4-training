@@ -74,14 +74,14 @@ def main(argv):
     file.close
     batch = "batch = " + str(numBatch)
     subdivision = "subdivisions = " + str(numSubdivision)
-    # the max batches must more than 6000
-    if FLAGS.total_classes < 3:
-        max_batches = "max_batches = 6000"
-        steps = "steps = 4800,5400"
-    else:
-        val = FLAGS.total_classes * 2000
-        max_batches = "max_batches = " + str(val)
-        steps = "steps = " + str(int(val * 0.8)) + "," + str(int(val * 0.9))
+    # the max batches = classes*2000, but not less than number of training images and not less than 6000
+    val = FLAGS.total_classes * 2000
+    if val < trainCount:
+        val = (int(trainCount / 1000) + 1) * 1000
+    if val < 6000:
+        val = 6000
+    max_batches = "max_batches = " + str(val)
+    steps = "steps = " + str(int(val * 0.8)) + "," + str(int(val * 0.9))
     filter = "filters = " + str(filterNum)
     classes = "classes = " + str(FLAGS.total_classes)
     # read anchors value from file
