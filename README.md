@@ -5,8 +5,8 @@
 圖片來源
 
 * [COCO](https://cocodataset.org/#download)
-
 * [PASCAL VOC](https://cv.gluon.ai/build/examples_datasets/pascal_voc.html)
+* [Open Images]()
 
 這邊以COCO為例，下載2017 Train images[18G] & 2017 Train/Val annotations [241MB]，並解壓縮。
 ```bash
@@ -133,9 +133,9 @@ python create_yolo_cfg.py -img_path ../coco_dataset/yolo/ -cfg_path ../coco_data
 訓練完成後會在weights目錄下產生yolov4_final.weights，使用新的模型檔進行辨識，執行命令如下:
 
 ```
-./darknet detector test ../coco_dataset/yolo_cfg/obj.data ../coco_dataset/yolo_cfg/yolov4.cfg ../coco_dataset/yolo_cfg/obj.data/yolov4_final.weights data/person.jpg(被偵測圖片路徑)
+./darknet detector test ../coco_dataset/yolo_cfg/obj.data ../coco_dataset/yolo_cfg/yolov4.cfg ../coco_dataset/yolo_cfg/weights/yolov4_final.weights data/person.jpg(被偵測圖片路徑)
 
-./darknet detector demo ../coco_dataset/yolo_cfg/obj.data ../coco_dataset/yolo_cfg/yolov4.cfg ../coco_dataset/yolo_cfg/obj.data/yolov4_final.weights test.mp4(被偵測影片路徑) -out_filename rosio.avi
+./darknet detector demo ../coco_dataset/yolo_cfg/obj.data ../coco_dataset/yolo_cfg/yolov4.cfg ../coco_dataset/yolo_cfg/weights/yolov4_final.weights test.mp4(被偵測影片路徑) -out_filename rosio.avi
 ```
 ## Reference
 * https://aiacademy.tw/yolo-v4-intro/
