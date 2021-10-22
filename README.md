@@ -90,9 +90,11 @@ python transform.py -source_path ../coco_dataset/extracted_dataset/ -output_path
 
 ## 建立訓練所需的設定檔
 
-因為預設cfg中anchors的數值是使用 coco datasets 計算出來的，在訓練自己的資料集時不一定適用，因此需要使用 calc_anchors 來計算出適合自己 datasets 的 anchors。利用darknet執行如下命令：
+因為預設cfg中anchors的數值是使用 coco datasets 計算出來的，在訓練自己的資料集時不一定適用，因此需要使用 calc_anchors 來計算出適合自己 datasets 的 anchors。
+參數num_of_clusters在非tiny模組設定為9，如果是tiny模組則設定為6。
+利用darknet執行如下命令：
 ```
-./darknet detector calc_anchors ../coco_dataset/yolo_cfg/obj.data -num_of_clusters 6 -width 416 -height 416 -showpause
+./darknet detector calc_anchors ../coco_dataset/yolo_cfg/obj.data -num_of_clusters 9 -width 416 -height 416 -showpause
 ```
 計算後的數值將會顯示在console並且寫入anchors.txt。
 
