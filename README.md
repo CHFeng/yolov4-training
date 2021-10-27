@@ -1,6 +1,11 @@
 # yolov4-training
 使用darknet執行訓練偵測模型
 
+## 安裝相關套件
+因有使用到absl套件進行command line參數的擷取，所以請先安裝此套件
+``` bash
+pip install absl-py
+```
 ## 準備圖片素材
 圖片來源
 
@@ -89,15 +94,6 @@ python transform.py -source_path ../coco_dataset/extracted_dataset/ -output_path
 完成此步驟後，會將yolo訓練所需要的圖片檔與txt檔放置在ouput_path的路徑下
 
 ## 建立訓練所需的設定檔
-
-因為預設cfg中anchors的數值是使用 coco datasets 計算出來的，在訓練自己的資料集時不一定適用，因此需要使用 calc_anchors 來計算出適合自己 datasets 的 anchors。
-參數num_of_clusters在非tiny模組設定為9，如果是tiny模組則設定為6。
-利用darknet執行如下命令：
-```
-./darknet detector calc_anchors ../coco_dataset/yolo_cfg/obj.data -num_of_clusters 9 -width 416 -height 416 -showpause
-```
-計算後的數值將會顯示在console並且寫入anchors.txt。
-
 執行create_yolo_cfg.py，指定參數如下：
 
 * img_path: 要訓練圖片的路徑，default: $pwd
@@ -114,7 +110,14 @@ python create_yolo_cfg.py -img_path ../coco_dataset/yolo/ -cfg_path ../coco_data
 * test.txt
 * train.txt
 * yolov4.cfg
-
+## anchors數值的修改
+因為預設cfg中anchors的數值是使用 coco datasets 計算出來的，在訓練自己的資料集時不一定適用，因此需要使用 calc_anchors 來計算出適合自己 datasets 的 anchors。
+參數num_of_clusters在非tiny模組設定為9，如果是tiny模組則設定為6。
+利用darknet執行如下命令：
+```
+./darknet detector calc_anchors ../coco_dataset/yolo_cfg/obj.data -num_of_clusters 9 -width 416 -height 416 -showpause
+```
+計算後的數值將會顯示在console並且寫入anchors.txt。如果要將此數值套用至yolov4.cfg中，可以再執行一次create_yolo_cfg.py
 ## 開始訓練
 在darknet資料夾下，根據需求下載預訓練模型：
 

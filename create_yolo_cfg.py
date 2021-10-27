@@ -78,8 +78,10 @@ def main(argv):
     val = FLAGS.total_classes * 2000
     if val < trainCount:
         val = (int(trainCount / 1000) + 1) * 1000
+        print("max_batches less than total images, update to:{}".format(val))
     if val < 6000:
         val = 6000
+        print("max_batches less than 6000, update to:{}".format(val))
     max_batches = "max_batches = " + str(val)
     steps = "steps = " + str(int(val * 0.8)) + "," + str(int(val * 0.9))
     filter = "filters = " + str(filterNum)
