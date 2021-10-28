@@ -12,7 +12,7 @@ from absl.flags import FLAGS
 pwd = os.path.abspath(os.getcwd())
 flags.DEFINE_string("source_path", pwd, "coco圖片集的路徑")
 flags.DEFINE_string("output_path", os.path.join(pwd, "extracted_dataset"), "抽取出的圖片集存放路徑")
-flags.DEFINE_string("class_list", "person,car", "設定要抽取出的圖片集類別")
+flags.DEFINE_string("class_list", "car,truck,bus,person,motorcycle", "設定要抽取出的圖片集類別")
 
 
 def update_progress(progress):

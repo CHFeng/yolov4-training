@@ -9,7 +9,7 @@ from absl.flags import FLAGS
 pwd = os.path.abspath(os.getcwd())
 flags.DEFINE_string("source_path", pwd, "coco圖片集的路徑")
 flags.DEFINE_string("output_path", os.path.join(pwd, "yolo"), "yolo .txt檔案的存放路徑")
-flags.DEFINE_string("class_list", "person,car,motorcycle,bus,truck,licence", "設定要轉換的圖片集類別")
+flags.DEFINE_string("class_list", "car,truck,bus,person,motorcycle,licence", "設定要轉換的圖片集類別")
 # class list index
 classList = {}
 
