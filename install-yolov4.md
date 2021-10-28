@@ -6,9 +6,9 @@
 
 ## GPU driver安裝
 ```bash
-$ sudo apt-get update
-$ sudo apt-get install -y ubuntu-drivers-common
-$ ubuntu-drivers devices
+sudo apt-get update
+sudo apt-get install -y ubuntu-drivers-common
+ubuntu-drivers devices
 ```
 執行ubuntu-drivers devices後，系統會顯示建議值，如下圖所示為nvidia-driver-470。
 
@@ -18,6 +18,16 @@ $ ubuntu-drivers devices
 ```
 sudo ubuntu-drivers autoinstall
 ```
+因為nvidia driver在linux kernel版本更新後，無法自行更新。因此可能遇到
+* 無法開機的狀況(因為GUI介面無法正常啟動)。
+* 無法執行nvidia-smi
+此時可以使用使用進階開機模式，使用上一個版本的kernel進入系統後，將nvidia driver移除。
+```bash
+sudo apt purge nvidia-.*
+sudo apt autoremove
+```
+重新開機後應該可以正常進入GUI介面，再重新安裝nvidia driver。
+參考[連結](https://transang.me/how-to-reinstall-nvidia-driver-after-a-linux-kernel-upgrade/)
 
 ## 安裝相關軟體
 1. CMake >= 3.12
