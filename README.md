@@ -82,7 +82,12 @@ Pascal VOC xml格式如下：
 YOLO格式如下：
 ```
 <object-class> <x> <y> <width> <height>
+- x, y代表該bndBox的中心座標與圖片寬高的比值，是bndBox歸一化後的中心座標
+- width, height代表該bndBox的寬高與輸入圖像寬高的比值，是bndBox歸一化後的寬高座標
 ```
+因此Yolo 格式的公式如下圖，w, h是圖片本身的寬與高
+![img3](img/img_3.png)
+
 執行transform_xml_to_txt.py，指定參數如下：
 
 * source_path: coco圖片集的路徑，default: $pwd
