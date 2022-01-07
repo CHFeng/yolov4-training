@@ -94,7 +94,7 @@ YOLO格式如下：
 * output_path: yolo .txt檔案&圖片檔的存放路徑，default: $pwd/yolo
 * class_list: 設定要轉換的圖片集類別，default:person,car,motorcycle,bus,truck,licence
 ```
-python transform.py -source_path ../coco_dataset/extracted_dataset/ -output_path ../coco_dataset/yolo -class_list person,car,motorcycle,bus,truck,licence 
+python transform_xml_to_txt.py -source_path ../coco_dataset/extracted_dataset/ -output_path ../coco_dataset/yolo -class_list person,car,motorcycle,bus,truck,licence 
 ```
 完成此步驟後，會將yolo訓練所需要的圖片檔與txt檔放置在ouput_path的路徑下
 
