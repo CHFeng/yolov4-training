@@ -23,8 +23,13 @@ sudo ubuntu-drivers autoinstall
 * 無法執行nvidia-smi
 此時可以使用使用進階開機模式，使用上一個版本的kernel進入系統後，將nvidia driver移除。
 ```bash
-sudo apt purge nvidia-.*
+sudo apt clean
+sudo apt purge *nvidia-.*
 sudo apt autoremove
+```
+接著可以執行,確定nvidia相關的library都已被移除
+```
+dpkg -l '*nvidia*'
 ```
 重新開機後應該可以正常進入GUI介面，再重新安裝nvidia driver。
 參考[連結](https://transang.me/how-to-reinstall-nvidia-driver-after-a-linux-kernel-upgrade/)
